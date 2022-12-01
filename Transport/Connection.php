@@ -462,9 +462,7 @@ class Connection
             if ($delayInMs > 0) { // the delay is <= 0 for queued messages
                 $message = json_encode([
                     'body' => $body,
-                    'headers' => $headers,
-                    // Entry need to be unique in the sorted set else it would only be added once to the delayed messages queue
-                    'uniqid' => uniqid('', true),
+                    'headers' => $headers
                 ]);
 
                 if (false === $message) {
