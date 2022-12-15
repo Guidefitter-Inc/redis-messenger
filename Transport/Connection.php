@@ -503,13 +503,6 @@ class Connection
             }
             throw new TransportException($error ?? $e->getMessage(), 0, $e);
         }
-
-        if (!$added) {
-            if ($error = $this->connection->getLastError() ?: null) {
-                $this->connection->clearLastError();
-            }
-            throw new TransportException($error ?? 'Could not add a message to the redis stream.');
-        }
     }
 
     public function setup(): void
