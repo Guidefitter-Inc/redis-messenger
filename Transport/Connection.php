@@ -484,12 +484,14 @@ class Connection
             throw new TransportException($error ?? $e->getMessage(), 0, $e);
         }
 
+        /*
+        // Removed because it would be triggered each time we add a message we already have in queue (deduplication) cause $added is false then
         if (!$added) {
             if ($error = $redis->getLastError() ?: null) {
                 $redis->clearLastError();
             }
             throw new TransportException($error ?? 'Could not add a message to the redis stream.');
-        }
+        }*/
 
         return $id;
     }
