@@ -435,12 +435,12 @@ class Connection
 
         try {
             if ($delayInMs > 0) { // the delay is <= 0 for queued messages
-                $id = uniqid('', true);
+                //$id = uniqid('', true);
                 $message = json_encode([
                     'body' => $body,
                     'headers' => $headers,
                     // Entry need to be unique in the sorted set else it would only be added once to the delayed messages queue
-                    'uniqid' => $id,
+                    //'uniqid' => $id, This line needs to be commented out, we don't want uniqid because deduplication in the delay queue can't happen with it.
                 ]);
 
                 if (false === $message) {
