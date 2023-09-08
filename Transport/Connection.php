@@ -435,7 +435,7 @@ class Connection
 
         try {
             if ($delayInMs > 0) { // the delay is <= 0 for queued messages
-                //$id = uniqid('', true);
+                $id = uniqid('', true);
                 $message = json_encode([
                     'body' => $body,
                     'headers' => $headers,
